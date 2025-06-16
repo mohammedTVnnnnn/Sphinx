@@ -585,12 +585,20 @@
                 <input type="tel" id="phone" required data-ar-placeholder="رقم الهاتف" data-en-placeholder="Phone Number">
             </div>
             <div class="form-group">
+                <label data-ar="عدد الأفراد" data-en="Number of Guests">عدد الأفراد</label>
+                <input type="number" id="guests" required min="1" value="1" data-ar-placeholder="عدد الأفراد" data-en-placeholder="Number of Guests">
+            </div>
+            <div class="form-group">
                 <label data-ar="تاريخ الوصول" data-en="Check-in Date">تاريخ الوصول</label>
                 <input type="date" id="check-in" required>
             </div>
             <div class="form-group">
                 <label data-ar="تاريخ المغادرة" data-en="Check-out Date">تاريخ المغادرة</label>
                 <input type="date" id="check-out" required>
+            </div>
+            <div class="form-group">
+                <label data-ar="الغرف المحجوزة" data-en="Reserved Rooms">الغرف المحجوزة</label>
+                <input type="text" id="reserved-rooms" required data-ar-placeholder="رقم الغرفة" data-en-placeholder="Room Number">
             </div>
             <button type="submit" data-ar="تأكيد الحجز" data-en="Confirm Booking">تأكيد الحجز</button>
         </form>

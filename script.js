@@ -33,9 +33,17 @@ function handleBooking(event) {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
+        guests: document.getElementById('guests').value,
         checkIn: document.getElementById('check-in').value,
-        checkOut: document.getElementById('check-out').value
+        checkOut: document.getElementById('check-out').value,
+        reservedRooms: document.getElementById('reserved-rooms').value
     };
+
+    // Calculate number of days
+    const checkInDate = new Date(formData.checkIn);
+    const checkOutDate = new Date(formData.checkOut);
+    const timeDiff = checkOutDate.getTime() - checkInDate.getTime();
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
     // Format dates to Arabic style
     const formatDate = (dateStr) => {
@@ -47,24 +55,40 @@ function handleBooking(event) {
         });
     };
 
+    const formatDateEn = (dateStr) => {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    };
+
     // Create formatted WhatsApp message
     const message = `✨ *طلب حجز جديد* ✨\n` +
         `🏨 *فندق سفنكس 1 سنتر* 🏨\n` +
         `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-        `👤 *معلومات الضيف:*\n` +
+        `👤 *معلومات الضيف: / Guest Information:*\n` +
         `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-        `📝 *الاسم:*\n` +
+        `📝 *الاسم: / Name:*\n` +
         `${formData.name}\n\n` +
-        `📧 *البريد الإلكتروني:*\n` +
+        `📧 *البريد الإلكتروني: / Email:*\n` +
         `${formData.email}\n\n` +
-        `📱 *رقم الهاتف:*\n` +
+        `📱 *رقم الهاتف: / Phone Number:*\n` +
         `${formData.phone}\n\n` +
-        `📅 *تفاصيل الحجز:*\n` +
+        `👥 *عدد الأفراد: / Number of Guests:*\n` +
+        `${formData.guests}\n\n` +
+        `📅 *تفاصيل الحجز: / Booking Details:*\n` +
         `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-        `📥 *تاريخ الوصول:*\n` +
-        `${formatDate(formData.checkIn)}\n\n` +
-        `📤 *تاريخ المغادرة:*\n` +
-        `${formatDate(formData.checkOut)}`;
+        `📥 *تاريخ الوصول: / Check-in Date:*\n` +
+        `${formatDate(formData.checkIn)} / ${formatDateEn(formData.checkIn)}\n\n` +
+        `📤 *تاريخ المغادرة: / Check-out Date:*\n` +
+        `${formatDate(formData.checkOut)} / ${formatDateEn(formData.checkOut)}\n\n` +
+        `🗓️ *عدد الليالي: / Number of Nights:*\n` +
+        `${daysDiff} ليالٍ / ${daysDiff} nights` +
+        `\n\n` +
+        `🚪 *الغرف المحجوزة: / Reserved Rooms:*\n` +
+        `${formData.reservedRooms}`;
 
     // Encode message for WhatsApp
     const encodedMessage = encodeURIComponent(message);
