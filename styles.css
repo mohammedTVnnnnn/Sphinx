@@ -89,7 +89,10 @@ nav {
     margin: 0 auto;
     position: relative;
 }
-
+@font-face {
+    font-family: 'Quivert';
+    src: url('./fonts/Quivert.ttf') format('truetype');
+}
 .logo h1 {
     background: var(--gradient-1);
     -webkit-background-clip: text;
@@ -97,7 +100,7 @@ nav {
     font-size: 2.2rem;
     font-weight: 800;
     letter-spacing: 1px;
-    font-family: var(--font-arabic);
+    font-family:'Quivert';
 }
 
 .nav-links {
@@ -731,7 +734,7 @@ nav {
 
 /* Footer */
 footer {
-    background: var(--dark-color);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: var(--white);
     padding: 5rem 5% 2rem;
     position: relative;
@@ -745,7 +748,7 @@ footer::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1));
+    background: linear-gradient(45deg, rgba(255,107,107,0.15), rgba(78,205,196,0.15));
     animation: gradientShift 10s ease infinite;
 }
 
@@ -775,6 +778,7 @@ footer::before {
     font-weight: 700;
     font-family: var(--font-arabic);
     transition: transform 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .footer-section h3:hover {
@@ -814,6 +818,8 @@ footer::before {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-section p a::before {
@@ -835,6 +841,7 @@ footer::before {
     background: #25D366;
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .footer-section p a i {
@@ -844,32 +851,6 @@ footer::before {
 
 .footer-section p a:hover i {
     transform: scale(1.2) rotate(360deg);
-}
-
-.social-links {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.social-links a {
-    color: var(--white);
-    font-size: 1.8rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.social-links a:hover {
-    color: var(--white);
-    transform: translateY(-5px) rotate(360deg);
-    background: var(--primary-color);
-    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
 }
 
 .footer-bottom {
@@ -892,18 +873,14 @@ footer::before {
     animation: borderGrow 2s ease forwards;
 }
 
-@keyframes borderGrow {
-    to {
-        width: 100%;
-    }
-}
-
 .footer-bottom p {
     font-size: 1rem;
     font-weight: 500;
     font-family: var(--font-arabic);
     position: relative;
     display: inline-block;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 .footer-bottom p::after {
@@ -945,10 +922,6 @@ footer::before {
         transform: translateX(-50%);
     }
 
-    .social-links {
-        justify-content: center;
-    }
-
     .footer-section p a {
         margin: 0 auto;
     }
@@ -966,12 +939,6 @@ footer::before {
     .footer-section p {
         font-size: 1rem;
     }
-
-    .social-links a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.4rem;
-    }
 }
 
 /* RTL Support for WhatsApp Link */
@@ -987,12 +954,22 @@ footer::before {
 .social-links a {
     color: var(--white);
     font-size: 1.8rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .social-links a:hover {
-    color: var(--primary-color);
-    transform: translateY(-3px);
+    color: var(--white);
+    transform: translateY(-5px) rotate(360deg);
+    background: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
 }
 
 .footer-bottom {
@@ -1286,4 +1263,248 @@ footer::before {
 .service-card:nth-child(3n),
 .room-card:nth-child(3n) {
     animation-delay: 2s;
+}
+
+/* Enhanced Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        transform: rotate(-10deg) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Enhanced Service Cards */
+.service-card {
+    animation: scaleIn 0.6s ease-out;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: var(--shadow-2);
+}
+
+.service-card i {
+    animation: rotateIn 0.8s ease-out;
+}
+
+/* Enhanced Room Cards */
+.room-card {
+    animation: slideInUp 0.8s ease-out;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.room-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: var(--shadow-2);
+}
+
+.room-info {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Enhanced Form Elements */
+.form-group input,
+.form-group select {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,107,107,0.15);
+}
+
+#booking-form button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#booking-form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+#booking-form button:hover::before {
+    left: 100%;
+}
+
+#booking-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255,107,107,0.4);
+}
+
+/* Enhanced Navigation */
+.nav-links a {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-1);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Enhanced Footer */
+.footer-section {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.social-links a {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+}
+
+/* Enhanced Mobile Menu */
+.nav-links.active {
+    animation: slideInUp 0.5s ease-out;
+}
+
+/* Loading Animation */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOut 0.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+}
+
+/* Enhanced Hero Section */
+.hero-content {
+    animation: scaleIn 1s ease-out;
+}
+
+.hero-content h1 {
+    animation: slideInUp 1.2s ease-out;
+}
+
+.hero-content p {
+    animation: slideInUp 1.4s ease-out;
+}
+
+/* Enhanced Section Headers */
+.services h2,
+.rooms h2,
+.location h2,
+.booking h2 {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Enhanced Map Container */
+.map-container {
+    animation: scaleIn 0.8s ease-out;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-container:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-2);
+}
+
+/* Enhanced Language Switcher */
+.language-switcher button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.language-switcher button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,107,107,0.2);
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+    .service-card,
+    .room-card {
+        animation: slideInUp 0.6s ease-out;
+    }
+    
+    .nav-links.active {
+        animation: slideInUp 0.4s ease-out;
+    }
+}
+
+/* Enhanced Touch Interactions */
+@media (hover: none) {
+    .service-card:active,
+    .room-card:active,
+    .nav-links a:active,
+    #booking-form button:active {
+        transform: scale(0.98);
+    }
 } 

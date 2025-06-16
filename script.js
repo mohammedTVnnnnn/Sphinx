@@ -88,6 +88,11 @@ function toggleMobileMenu() {
     mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
         ? '<i class="fas fa-times"></i>' 
         : '<i class="fas fa-bars"></i>';
+    
+    // Add animation class
+    if (navLinks.classList.contains('active')) {
+        navLinks.style.animation = 'slideInUp 0.5s ease-out';
+    }
 }
 
 // Close mobile menu when clicking outside
@@ -193,5 +198,74 @@ document.addEventListener('DOMContentLoaded', () => {
             observer: true,
             observeParents: true
         });
+    });
+});
+
+// Scroll Progress Bar
+document.addEventListener('DOMContentLoaded', () => {
+    // Create scroll progress bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+
+    // Update progress bar on scroll
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (window.scrollY / windowHeight) * 100;
+        progressBar.style.width = `${progress}%`;
+    });
+});
+
+// Loading Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const loading = document.createElement('div');
+    loading.className = 'loading';
+    loading.innerHTML = '<div class="spinner"></div>';
+    document.body.appendChild(loading);
+
+    // Remove loading screen after animation
+    setTimeout(() => {
+        loading.remove();
+    }, 1500);
+});
+
+// Intersection Observer for Animations
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements with animations
+    document.querySelectorAll('.service-card, .room-card, .footer-section').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'all 0.6s ease-out';
+        observer.observe(element);
+    });
+});
+
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 }); 
