@@ -118,7 +118,7 @@ See the [Arabic section](#الهيكلية) for the folder structure.
 
 1. **Step 1:** Download or clone the repository:
    ```bash
-   git clone <repository-link>
+   git clone <https://github.com/mohammedTVnnnnn/Sphinx.git>
    ```
 
 2. **Step 2:** Place the folder on any web server or open `index.html` directly in your browser.
