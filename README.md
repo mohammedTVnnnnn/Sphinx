@@ -148,13 +148,6 @@ See the [Arabic section](#الهيكلية) for the folder structure.
 - **WhatsApp API** for booking
 
 ---
-
-## Screenshots
-
-> Add screenshots here to showcase the website on desktop and mobile.
-
----
-
 ## License
 
 All rights reserved © 2025 Sphinx 1 Centre Hotel 
