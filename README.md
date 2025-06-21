@@ -24,8 +24,9 @@
 - **عرض تفاعلي للغرف** مع معرض صور لكل غرفة (باستخدام Swiper.js).
 - **نموذج حجز متكامل** يرسل الطلب مباشرة إلى واتساب.
 - **تصميم متجاوب بالكامل** لجميع الأجهزة.
-- **تأثيرات بصرية حديثة** (Animations, Gradients, Shadows).
+- **تأثيرات بصرية متقدمة** (رسوم متحركة معززة، تدرجات، ظلال).
 - **شريط تقدم للتمرير** وتجربة مستخدم سلسة.
+- **شاشة تحميل جذابة** لتحسين تجربة المستخدم الأولية.
 - **خريطة مدمجة** لموقع الفندق.
 
 ---
@@ -79,6 +80,7 @@ Sphinx/
 - **Font Awesome** للأيقونات
 - **Responsive Design** (Media Queries)
 - **WhatsApp API** لإرسال الحجز
+- **Intersection Observer API** للتحكم في الرسوم المتحركة عند التمرير
 
 ---
 ## حقوق الملكية
@@ -102,8 +104,9 @@ All rights reserved © 2025 Sphinx 1 Centre Hotel
 - **Interactive room galleries** (Swiper.js).
 - **Integrated booking form** that sends requests to WhatsApp.
 - **Fully responsive design** for all devices.
-- **Modern visual effects** (animations, gradients, shadows).
+- **Advanced visual effects** (enhanced animations, gradients, shadows).
 - **Scroll progress bar** and smooth user experience.
+- **Engaging loading screen** for improved initial user experience.
 - **Embedded map** for hotel location.
 
 ---
@@ -146,6 +149,7 @@ See the [Arabic section](#الهيكلية) for the folder structure.
 - **Font Awesome** for icons
 - **Responsive Design** (Media Queries)
 - **WhatsApp API** for booking
+- **Intersection Observer API** for scroll-triggered animations
 
 ---
 ## License
